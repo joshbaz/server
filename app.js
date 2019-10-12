@@ -3,13 +3,11 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
-const expressHbs = require('express-handlebars');
+
 const app = express();
 
-//the express handlebars are not in-built like pug
-//exportation is required
-app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'}));
-app.set('view engine', 'hbs');
+
+app.set('view engine', 'ejs');
 app.set('views',"views");
 
 const adminData = require('./routes/admin');
