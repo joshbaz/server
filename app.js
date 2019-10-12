@@ -8,9 +8,9 @@ const app = express();
 
 //the express handlebars are not in-built like pug
 //exportation is required
-app.engine('handlebars', expressHbs());
-app.set('view engine', 'handlebars');
-app.set('views', 'views');
+app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'}));
+app.set('view engine', 'hbs');
+app.set('views',"views");
 
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
