@@ -10,6 +10,6 @@ router.get('/', (req, res, next) => {
     //importing the products from adminjs
     const products = adminData.products;
     //this returning the html shop pug page
-    res.render('shop', {prods: products, docTitle: 'Shop'});
+    res.render('shop', {prods: products, pageTitle: 'Shop', path: '/'});
 });
 module.exports = router;
