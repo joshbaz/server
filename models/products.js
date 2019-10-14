@@ -29,17 +29,16 @@ module.exports = class Product {
 
         });
     }
-
-    static fetchAll() {
+    //callback function is used : cb
+    static fetchAll(cb) {
         const pathD = path.join(path.dirname(process.mainModule.filename),
             'data',
             'products.json');
         fs.readFile(pathD, (err, fileContent) => {
             if (err) {
-                return [];
+                cb([]);
             }
-            return JSON.parse(fileContent);
+            cb(JSON.parse(fileContent));
         });   
-        return products;
     }
 }
