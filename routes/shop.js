@@ -1,22 +1,10 @@
 const path = require('path');
 const express = require('express');
-
-
 const router = express.Router();
-const adminData = require('./admin');
+
+const productsController = require('../controllers/products')
+
 
 //the use helps us to add a middleware function
-router.get('/', (req, res, next) => {
-    //importing the products from adminjs
-    const products = adminData.products;
-    //this returning the html shop pug page
-    res.render('shop', {
-        prods: products,
-        pageTitle: 'Shop', 
-        path: '/',
-        hasProducts: products.length > 0,
-        activeShop:true,
-        productCSS: true
-    });
-});
+router.get('/', productsController.getProducts);
 module.exports = router;
