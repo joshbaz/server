@@ -21,7 +21,7 @@ const getProductsFromFile = (cb) => {
 }
 
 module.exports = class Product {
-    constructor(Title, ImageUrl, Description, Price) {
+    constructor(Title, ImageUrl, Price, Description) {
         this.title = Title;
         this.imageUrl = ImageUrl;
         this.description= Description;
@@ -29,6 +29,8 @@ module.exports = class Product {
     }
 
     save() {
+        //generation of a random id for the product
+        this.id = Math.random().toString();
        getProductsFromFile( products => {
            //new product
            products.push(this);
@@ -40,5 +42,11 @@ module.exports = class Product {
     //callback function is used : cb
     static fetchAll(cb) {
         getProductsFromFile(cb);
+    }
+
+    static findById(id, cb){
+        getProductsFromFile(products => {
+            const product = products.find(p => p.id === id);
+        });
     }
 }
